@@ -54,7 +54,7 @@ public class Arrays {
             while(windowEnd - windowStart > 0)
             {
                 int minHeight = Math.abs(Math.min(height[windowEnd], height[windowStart]));
-                answer = Math.max(answer, minHeight * Math.abs(windowEnd - windowStart - 1));
+                answer = Math.max(answer, minHeight * Math.abs(windowEnd - windowStart));
                 windowStart++;
             }
         }
