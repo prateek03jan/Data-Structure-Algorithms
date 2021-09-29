@@ -3,9 +3,18 @@ package com.leetcode;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        int[] height = {1,8,6,2,5,4,8,3,7};
+        int[] arr = {6,2,1,5,4,3,0};
+
         Arrays arrays = new Arrays();
-        System.out.println(arrays.Q11_MaxArea(height));
+        var test = arrays.Q31_NextPermutation(arr);
+        PrintArray(test);
+    }
+
+    public static void PrintArray(int[] arr)
+    {
+        for(int i = 0; i < arr.length; i++)
+        {
+            System.out.println(i + " ");
+        }
     }
 }
