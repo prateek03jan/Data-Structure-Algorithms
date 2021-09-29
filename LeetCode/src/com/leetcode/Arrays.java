@@ -166,4 +166,57 @@ public class Arrays {
         ReverseArrayElements(nums, k + 1, nums.length - 1);
         return nums;
     }
+
+    /**
+     * 33. Search in Rotated Sorted Array
+     * There is an integer array nums sorted in ascending order (with distinct values).
+     * Prior to being passed to your function, nums is possibly rotated at an unknown pivot index
+     * k (1 <= k < nums.length) such that the resulting array is
+     * [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed).
+     * For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+     * Given the array nums after the possible rotation and an integer target,
+     * return the index of target if it is in nums, or -1 if it is not in nums.
+     * You must write an algorithm with O(log n) runtime complexity.
+     */
+    public int Q33_Search(int[] nums, int target) {
+        if (nums == null || nums.length == 0) return -1;
+
+        int high = nums.length - 1, low = 0;
+        int first = nums[0];
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            int value = nums[mid];
+            if (value == target) {
+                return mid;
+            }
+            boolean isBig = value >= first;
+            boolean isTargetBig = target >= first;
+            if (isBig == isTargetBig) {
+                if (value < target) {
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
+                }
+            } else {
+                if (isBig) {
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+
+    /*
+    * 34. Find First and Last Position of Element in Sorted Array
+    * Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+    * If target is not found in the array, return [-1, -1].
+    * You must write an algorithm with O(log n) runtime complexity.
+     */
+    public int[] Q34_SearchRange(int[] nums, int target) {
+        List<Integer> ans = new ArrayList<>();
+        return null;
+    }
 }
