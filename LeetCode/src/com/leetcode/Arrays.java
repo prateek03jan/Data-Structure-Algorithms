@@ -21,7 +21,7 @@ public class Arrays {
      * Two loops will create O(N^2)
      * Time Complexity - O(n)
      * Space complexity - O(n)
-     */
+     **/
     public int[] Q1_TwoSum(int[] nums, int target) {
         int[] answer = new int[2];
         HashMap<Integer, Integer> visitedMap = new HashMap<>();
@@ -45,7 +45,7 @@ public class Arrays {
      * Notice that you may not slant the container.
      * Time complexity - O(n)
      * Space Complexity - O(1)
-     */
+     **/
     public int Q11_MaxAreaSlidingWindowTechnique(int[] height) {
         int answer = Integer.MIN_VALUE;
         int windowStart;
@@ -68,7 +68,7 @@ public class Arrays {
      * Notice that you may not slant the container.
      * Time complexity - O(n)
      * Space Complexity - O(1)
-     */
+     **/
     public int Q11_MaxAreaSimpleBoundaries(int[] height) {
         int answer = Integer.MIN_VALUE;
         int windowStart = 0;
@@ -88,7 +88,7 @@ public class Arrays {
      * Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]]
      * such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
      * Notice that the solution set must not contain duplicate triplets.
-     */
+     **/
     public List<List<Integer>> Q15_ThreeSum(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
 
@@ -124,7 +124,7 @@ public class Arrays {
 
     /**
      * 26. Remove Duplicates from Sorted Array
-     */
+     **/
     public int Q26_RemoveDuplicates(int[] A) {
         if (A.length < 2)
             return A.length;
@@ -146,7 +146,7 @@ public class Arrays {
      * Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
      * If such an arrangement is not possible, it must rearrange it as the lowest possible order
      * (i.e., sorted in ascending order). The replacement must be in place and use only constant extra memory.
-     */
+     **/
     public int[] Q31_NextPermutation(int[] nums) {
         int k = nums.length - 2;
         while (k >= 0 && nums[k] >= nums[k + 1]) {
@@ -177,7 +177,7 @@ public class Arrays {
      * Given the array nums after the possible rotation and an integer target,
      * return the index of target if it is in nums, or -1 if it is not in nums.
      * You must write an algorithm with O(log n) runtime complexity.
-     */
+     **/
     public int Q33_Search(int[] nums, int target) {
         if (nums == null || nums.length == 0) return -1;
 
@@ -209,14 +209,84 @@ public class Arrays {
         return -1;
     }
 
-    /*
-    * 34. Find First and Last Position of Element in Sorted Array
-    * Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-    * If target is not found in the array, return [-1, -1].
-    * You must write an algorithm with O(log n) runtime complexity.
+    /**
+     * 34. Find First and Last Position of Element in Sorted Array
+     * Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+     * If target is not found in the array, return [-1, -1].
+     * You must write an algorithm with O(log n) runtime complexity.
      */
     public int[] Q34_SearchRange(int[] nums, int target) {
         List<Integer> ans = new ArrayList<>();
         return null;
+    }
+
+    /**
+     * 42. Trapping Rain Water
+     */
+    public int Q42_Trap(int[] height) {
+        int rain = 0;
+        return rain;
+    }
+
+    /**
+     * 4. Median of Two Sorted Arrays
+     * Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+     * The overall run time complexity should be O(log (m+n)).
+     */
+    public double Q4_FindMedianSortedArrays(int[] nums1, int[] nums2) {
+        int i = 0, j = 0, counter = 0;
+        double median = 0;
+        int n1Len = nums1.length;
+        int n2Len = nums2.length;
+        int[] nums3 = new int[n1Len + n2Len];
+        int newArrLen = n1Len + n2Len;
+
+        while (i < n1Len && j < n2Len) {
+            if (nums1[i] < nums2[j]) {
+                nums3[counter++] = nums1[i++];
+            } else if (nums1[i] > nums2[j]) {
+                nums3[counter++] = nums2[j++];
+            }
+        }
+        while (i < n1Len) {
+            nums3[counter++] = nums1[i++];
+        }
+        while (j < n2Len) {
+            nums3[counter++] = nums2[j++];
+        }
+
+        if (newArrLen % 2 != 0) {
+            median = nums3[(int) Math.ceil(newArrLen / 2)];
+        } else {
+            var midSum = nums3[(newArrLen / 2)] + nums3[(newArrLen / 2) - 1];
+            if (midSum == 0) return 0;
+
+            median = (double) midSum / 2;
+        }
+        return median;
+    }
+
+    /**
+     * 724. Find Pivot Index
+     * Given an array of integers nums, calculate the pivot index of this array.
+     * The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal
+     * to the sum of all the numbers strictly to the index's right.
+     * If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left.
+     * This also applies to the right edge of the array.
+     * Return the leftmost pivot index. If no such index exists, return -1.
+     */
+    public int Q724_PivotIndex(int[] nums) {
+        int total = 0;
+        for (int i = 0; i < nums.length; i++) {
+            total += nums[i];
+        }
+        int leftSum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            total -= nums[i];
+            if (total == leftSum)
+                return i;
+            leftSum += nums[i];
+        }
+        return -1;
     }
 }
