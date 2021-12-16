@@ -3,20 +3,26 @@ package com.leetcode;
 public class Main {
 
     public static void main(String[] args) {
-        int[] arr = {6, 2, 1, 5, 4, 3, 0};
-
-        Arrays arrays = new Arrays();
-        StringQuestions stringQuestions = new StringQuestions();
-        int[] arr1 = new int[2];
-        arr1[0] = 0;
-        arr1[1] = 0;
-        int[] arr2 = new int[2];
-        arr2[0] = 0;
-        arr2[1] = 0;
-//        Print(stringQuestions.Q3_LengthOfLongestSubstring("pwwkew"));
-//        var test = arrays.Q31_NextPermutation(arr);
-//        PrintArray(test);
-        Print(arrays.Q4_FindMedianSortedArrays(arr1, arr2));
+//        int[] arr = {6, 2, 1, 5, 4, 3, 0};
+//
+//        Arrays arrays = new Arrays();
+//        StringQuestions stringQuestions = new StringQuestions();
+//        int[] arr1 = new int[2];
+//        arr1[0] = 0;
+//        arr1[1] = 0;
+//        int[] arr2 = new int[2];
+//        arr2[0] = 0;
+//        arr2[1] = 0;
+////        Print(stringQuestions.Q3_LengthOfLongestSubstring("pwwkew"));
+////        var test = arrays.Q31_NextPermutation(arr);
+////        PrintArray(test);
+//        Print(arrays.Q4_FindMedianSortedArrays(arr1, arr2));
+        MyLinkedList myLinkedList = new MyLinkedList();
+        myLinkedList.addAtHead(1);
+        myLinkedList.addAtHead(3);
+        myLinkedList.addAtHead(2);
+        myLinkedList.addAtIndex(1, 5);
+        myLinkedList.printLinkedList();
     }
 
     public static void Print(Object obj) {
